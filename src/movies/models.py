@@ -9,17 +9,26 @@ from django.db.models.fields import CharField
 class Actor(models.Model):
     name = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
 class Director(models.Model):
     name = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
 class Genre(models.Model):
     name = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -39,3 +48,12 @@ class Movie(models.Model):
     poster_url  = models.SlugField(max_length=220, null=True)
     big_poster_url = models.SlugField(max_length=220, null=True)
 
+    class Meta:
+        ordering = ['title']
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular instance of the model."""
+        return f"/movie/{self.id}"
+
+    def __str__(self):
+        return self.title
