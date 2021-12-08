@@ -1,6 +1,9 @@
 <html>
     <head>
         <style>
+            body{
+                background-color: black;
+            }
             a:link, a:visited {
                 text-decoration: none;
                 color: black;
@@ -10,6 +13,7 @@
             }
             body{
                 padding: 10%;
+                background-color: black;
             }
             .col-md-3 h6{
                 padding: 15px;
@@ -25,6 +29,7 @@
                 <div class="col-md-3">
                     <p>This is the are for the filterrs</p>
                     <!--This part is the form-->
+                    <!--<form name="search" method="GET" action=}">
                     <label for="actorsDataList" class="form-label">Actors</label>
                     <input class="form-control" list="actorlistOptions" id="actorsDataList" placeholder="Type to search...">
                     <datalist id="actorlistOptions">
@@ -40,6 +45,11 @@
                             <option value="{{genre.name}}">
                         {% endfor %}
                     </datalist>
+                    </form>-->
+                    <form action="{% url 'movies:search' %}" method="get">
+                        {{ form }}
+                        <input type="submit">
+                    </form>
                 </div>
 
 
